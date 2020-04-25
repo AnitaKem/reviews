@@ -1,9 +1,28 @@
-<!--The content below is only a placeholder and can be replaced.-->
-<div style="text-align:center">
-  <h1>
-   Скоро тут будет UI для Пашки
-  </h1>  
-</div>
-<img src="assets/images/person.svg" alt="waiting person">
+<header>
+
+</header>
+<nav class="main-nav">
+  <div class="main-nav__row">
+    <a href="/" class="nav-link home">
+      <h1> 
+        HooverReviewer
+      </h1> 
+    </a>
+  </div>
+  <div class="main-nav__row">
+    <form class="search" [formGroup]="searchForm">
+      <button type="button" class="search__btn btn-search-icon">
+        <fa-icon [icon]="faSearch"></fa-icon>
+      </button>
+      <input type="search" class="search__input" formControlName="searchInput">
+      <button type="button" class="search__btn btn-clear" *ngIf="searchForm.controls['searchInput'].value" (click)="clear()">
+        <fa-icon [icon]="faTimes"></fa-icon>
+      </button>
+    </form>  
+  </div> 
+  
+</nav>
+
+
 
 <router-outlet></router-outlet>

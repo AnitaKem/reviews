@@ -5,12 +5,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CoreModule } from './core/core.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatInputModule } from '@angular/material/input';
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatIconModule } from '@angular/material/icon';
-import { FormsModule } from '@angular/forms';
-import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { ReactiveFormsModule } from '@angular/forms';
+import { SharedModule } from './shared/shared.module';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -18,17 +14,13 @@ import { ReactiveFormsModule } from '@angular/forms';
   ],
   imports: [
     BrowserModule,
+
+    // import HttpClientModule after BrowserModule.
+    HttpClientModule,
     AppRoutingModule,
     CoreModule,
     BrowserAnimationsModule,
-    FormsModule,
-    FontAwesomeModule,
-    ReactiveFormsModule,
-
-    // Material
-    MatInputModule,
-    MatFormFieldModule,
-    MatIconModule
+    SharedModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { faSearch, faTimes } from '@fortawesome/free-solid-svg-icons';
-import { FormBuilder, Validators } from '@angular/forms';
+import { SearchService } from './shared/services';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-root',
@@ -8,19 +8,21 @@ import { FormBuilder, Validators } from '@angular/forms';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  searchForm = this.fb.group({
-    searchInput: ['', Validators.required],
-  });
+  public cities: Array<string> = ['Москва', 'Санкт-Петербург', 'Екатеринбург'];
+  public cities$: Observable<Array<string>>;
+  
+  constructor(private searchService: SearchService) {
+    this.cities$ = this.searchService.getCities();
+    this.cities$.subscribe(t => {
+      debugger;
+    });
+   }
 
-  constructor(private fb: FormBuilder) {
+  public onCitySelected(city: string) {
 
   }
-  public value = '';
 
-  faSearch = faSearch;
-  faTimes = faTimes;
-
-  public clear() {
-    this.searchForm.setValue({ searchInput: '' });
+  public onSearch(text: string) {
+    
   }
 }

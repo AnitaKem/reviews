@@ -1,0 +1,5 @@
+<h2>Результаты поиска</h2>
+<div class="search-resluts" *ngIf="results$ | async as results">
+  <app-search-result *ngFor="let result of results" [place]="result"></app-search-result>
+</div>
+

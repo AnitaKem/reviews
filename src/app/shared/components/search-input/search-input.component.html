@@ -1,0 +1,9 @@
+<form class="search" [formGroup]="searchForm">
+  <button type="button" class="search__btn btn-search-icon">
+    <fa-icon [icon]="faSearch"></fa-icon>
+  </button>
+  <input type="search" class="search__input" formControlName="searchInput">
+  <button type="button" class="search__btn btn-clear" *ngIf="searchForm.controls['searchInput'].value" (click)="onClear()">
+    <fa-icon [icon]="faTimes"></fa-icon>
+  </button>
+</form>

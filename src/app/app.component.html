@@ -1,28 +1,22 @@
 <header>
-
+  <nav class="main-nav">
+    <div class="main-nav__row">
+      <a href="/" class="nav-link home">
+        <h1> 
+          HooverReviewer
+        </h1> 
+      </a>
+    </div>
+    <div class="main-nav__row second-row">
+      <app-search-input (search)="onSearch($event)"></app-search-input>
+      <app-city-select [cities]="cities" (selected)="onCitySelected($event)"></app-city-select>
+    </div> 
+    
+  </nav>
 </header>
-<nav class="main-nav">
-  <div class="main-nav__row">
-    <a href="/" class="nav-link home">
-      <h1> 
-        HooverReviewer
-      </h1> 
-    </a>
-  </div>
-  <div class="main-nav__row">
-    <form class="search" [formGroup]="searchForm">
-      <button type="button" class="search__btn btn-search-icon">
-        <fa-icon [icon]="faSearch"></fa-icon>
-      </button>
-      <input type="search" class="search__input" formControlName="searchInput">
-      <button type="button" class="search__btn btn-clear" *ngIf="searchForm.controls['searchInput'].value" (click)="clear()">
-        <fa-icon [icon]="faTimes"></fa-icon>
-      </button>
-    </form>  
-  </div> 
-  
-</nav>
+
+<div class="content-container">
+  <router-outlet></router-outlet>
+</div>
 
 
-
-<router-outlet></router-outlet>

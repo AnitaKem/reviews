@@ -1,0 +1,31 @@
+.search-result {
+  display: flex;
+  margin-top: 32px;
+  margin-bottom: 32px;
+  padding: 16px;
+  background-color: #f1f1f1;
+  
+  &__img {
+    width: 120px;
+    height: auto;
+  }
+
+  &__content {
+    margin-left: 16px;
+  } 
+}
+
+.place-info {
+  padding-bottom: 8px;
+
+  &__name {
+    font-size: 16px;
+    font-weight: 500;
+    margin-bottom: 8px;
+  }
+
+  &__address {
+    font-style: italic;
+    font-size: 12px;
+  }
+}

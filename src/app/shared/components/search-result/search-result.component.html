@@ -1,0 +1,11 @@
+<div class="search-result" *ngIf="place">
+  <img class="search-result__img" [src]="place | firstplacephoto" [alt]="place.name" />
+  <div class="search-result__content place-info">
+    <div class="place-info__name">{{ place.name }}</div>
+    <div class="place-info__services">Нашлось в: {{ place | services }}</div>
+    <div class="place-info__tags">
+      {{ place.tags | tags }}
+    </div>
+    <div class="place-info__address">{{ place.address | address }}</div>
+  </div>
+</div>

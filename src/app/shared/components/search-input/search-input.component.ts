@@ -25,7 +25,7 @@ export class SearchInputComponent {
   }
 
   public onSearch() {
-    const val = this.searchForm.value();
+    const val = this.searchForm.value;
     if (!val.searchInput) return;
     this.search.emit(val.searchInput);
   }

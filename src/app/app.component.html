@@ -9,7 +9,7 @@
     </div>
     <div class="main-nav__row second-row">
       <app-search-input (search)="onSearch($event)"></app-search-input>
-      <app-city-select [cities]="cities" (selected)="onCitySelected($event)"></app-city-select>
+      <app-city-select [cities]="cities$ | async" (selected)="onCitySelected($event)"></app-city-select>
     </div> 
     
   </nav>

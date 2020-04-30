@@ -1,8 +1,8 @@
 <form class="search" [formGroup]="searchForm">
-  <button type="button" class="search__btn btn-search-icon">
+  <button type="button" class="search__btn btn-search-icon" (click)="onSearch()">
     <fa-icon [icon]="faSearch"></fa-icon>
   </button>
-  <input type="search" class="search__input" formControlName="searchInput">
+  <input type="search" class="search__input" formControlName="searchInput" (keyup.enter)="onSearch()">
   <button type="button" class="search__btn btn-clear" *ngIf="searchForm.controls['searchInput'].value" (click)="onClear()">
     <fa-icon [icon]="faTimes"></fa-icon>
   </button>

@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { map, tap } from 'rxjs/operators';
 import { Place, ContactType } from '../models';
 import { environment } from '../../../environments/environment';
 
@@ -14,7 +14,7 @@ export class SearchService {
 
   constructor(private http: HttpClient) { }
 
-  public getPlaces(text: string, city: string): Observable<Array<Place>> {
+  public getPlaces(text: string, city: string) {
     const places: Array<Place> = [{
       name: 'Му-Му',
       address: {
@@ -212,17 +212,14 @@ export class SearchService {
       ],
       avgPrice: 360
     }];
-
-    this.http.get(`${this.endpoint}/places/${text}/${city}`);
-    return of(places);
+    return this.http.get(`${this.endpoint}/places/${text}/${city}`).pipe(
+      map(result => result as Array<Place>),
+    );
   }
 
   public getCities(): Observable<Array<string>> {
-    return this.http.get(`${this.endpoint}/citys`).pipe(
-      map(result => {
-        debugger;
-        return []
-      })
+    return this.http.get(`${this.endpoint}/cities`).pipe(
+      map(result => result as Array<string>)
     );
   }
 }

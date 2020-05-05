@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
 import { map, tap } from 'rxjs/operators';
-import { Place, ContactType } from '../models';
+import { Place, ContactType, Review } from '../models';
 import { environment } from '../../../environments/environment';
 
 @Injectable({
@@ -212,7 +212,13 @@ export class SearchService {
       ],
       avgPrice: 360
     }];
-    return this.http.get(`${this.endpoint}/places/${text}/${city}`).pipe(
+
+    return this.http.get(`${this.endpoint}/places`, {
+      params: {
+        search_query: text,
+        city
+      }
+    }).pipe(
       map(result => result as Array<Place>),
     );
   }
@@ -220,6 +226,12 @@ export class SearchService {
   public getCities(): Observable<Array<string>> {
     return this.http.get(`${this.endpoint}/cities`).pipe(
       map(result => result as Array<string>)
+    );
+  }
+
+  public getReviews(place: Place): Observable<Array<Review>> {
+    return this.http.post(`${this.endpoint}/reviews`, place).pipe(
+      map(result => result as Array<Review>),
     );
   }
 }
